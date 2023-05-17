@@ -1,0 +1,4 @@
+org\itson\fachada\excepciones\PersistenciaException.class
+org\itson\fachada\IAdministrarItinerarios.class
+org\itson\fachada\AdministrarItinerariosFachada$AdministrarItinerarios.class
+org\itson\fachada\AdministrarItinerariosFachada.class
