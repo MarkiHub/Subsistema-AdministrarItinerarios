@@ -6,6 +6,8 @@ package org.itson.fachada;
 
 import ObjNegocio.Especie;
 import ObjNegocio.Itinerario;
+import ObjNegocio.Zona;
+import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -166,6 +168,37 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
                 throw new PersistenciaException("No hay datos para desplegar");
             }
             return datos;
+        }
+
+        public HashSet<Zona> obtenerZonas(List<Especie> esp) {
+            HashSet<Zona> zonasRecorridas = new HashSet<>();
+            for (Especie e : esp) {
+                zonasRecorridas.add(e.getZona());
+            }
+            return zonasRecorridas;
+        }
+
+        public float CalcularLongitud(HashSet<Zona> zonasRecorridas) {
+            float longitud = 0;
+            for (Zona e : zonasRecorridas) {
+                longitud += e.getExtension();
+            }
+
+            return longitud;
+        }
+
+        public int calcularMaxVisitantes(HashSet<Zona> zonasRecorridas) {
+            float minimoVisitantes = ((Zona) zonasRecorridas.toArray()[0]).getExtension();
+            for (Zona e : zonasRecorridas) {
+                if (e.getExtension() < minimoVisitantes) {
+                    minimoVisitantes = e.getExtension();
+                }
+            }
+            return (int) (minimoVisitantes / 50.0f);
+        }
+
+        public int calcularNumEspecies(List<Especie> esp) {
+            return esp.size();
         }
     }
 }
