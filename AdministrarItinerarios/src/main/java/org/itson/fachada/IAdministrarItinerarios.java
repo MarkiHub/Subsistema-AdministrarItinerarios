@@ -46,4 +46,9 @@ public interface IAdministrarItinerarios {
      * @return Lista de datos (especies)
      */
     public List<Especie> recuperarDatosFormulario() throws PersistenciaException;
+    
+    /**
+     * Inserta la infomracion requierida para el caso de uso
+     */
+    public void insertarDummies()throws PersistenciaException;
 }

@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import org.itson.fachada.excepciones.PersistenciaException;
 import org.itson.persistencia.excepciones.DAOException;
 import org.itson.persistencia.implementacion.EspeciesDAO;
+import org.itson.persistencia.implementacion.InsertarDummies;
 import org.itson.persistencia.implementacion.ItinerariosDAO;
 import org.itson.persistencia.interfaces.IEspeciesDAO;
 import org.itson.persistencia.interfaces.IItinerariosDAO;
@@ -79,6 +80,14 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
     }
 
     /**
+     * Inserta la infomracion requierida para el caso de uso
+     */
+    @Override
+    public void insertarDummies() throws PersistenciaException{
+        adm.insertarDummies();
+    }
+
+    /**
      * Clase que realiza las operaciones de administracion
      */
     protected class AdministrarItinerarios {
@@ -96,6 +105,8 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
          */
         private IEspeciesDAO espDao;
 
+        private InsertarDummies inDum;
+
         /**
          * Constructor que inicializa el acceso a datos
          *
@@ -109,6 +120,8 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
 
                 this.itiDao = new ItinerariosDAO(BASE_DATOS);
                 this.espDao = new EspeciesDAO(BASE_DATOS);
+                this.inDum = new InsertarDummies(BASE_DATOS);
+
             } catch (DAOException ex) {
                 throw new PersistenciaException("No se pudo iniciar el programa");
             }
@@ -168,6 +181,17 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
                 throw new PersistenciaException("No hay datos para desplegar");
             }
             return datos;
+        }
+
+        /**
+         * Inserta la infomracion requierida para el caso de uso
+         */
+        public void insertarDummies() throws PersistenciaException {
+            try {
+                inDum.insertarDummies();
+            }catch(DAOException e){
+                throw new PersistenciaException(e.getMessage());
+            }
         }
 
         public HashSet<Zona> obtenerZonas(List<Especie> esp) {
