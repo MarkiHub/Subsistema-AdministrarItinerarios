@@ -140,8 +140,15 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
             if (itiExiste != null) {
                 throw new PersistenciaException("Itinerario existente");
             }
-
+            
+            float longitud = calcularLongitud(obtenerZonas(iti.getEspecies()));
+            int maxVisitantes = calcularMaxVisitantes(obtenerZonas(iti.getEspecies()));
+            int numEspecies = calcularNumEspecies(iti.getEspecies());
+            
             try {
+                iti.setLongitud(longitud);
+                iti.setMaxVisitantes(maxVisitantes);
+                iti.setNumEspecies(numEspecies);
                 iti = itiDao.insertar(iti);
             } catch (DAOException ex) {
                 throw new PersistenciaException("No se pudo agregar el itinerario");
@@ -193,7 +200,12 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
                 throw new PersistenciaException(e.getMessage());
             }
         }
-
+        
+        /**
+         * Obtiene las zonas recorridas en base a las especies
+         * @param esp Especies recorridas
+         * @return Zonas recorridas
+         */
         public HashSet<Zona> obtenerZonas(List<Especie> esp) {
             HashSet<Zona> zonasRecorridas = new HashSet<>();
             for (Especie e : esp) {
@@ -201,8 +213,13 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
             }
             return zonasRecorridas;
         }
-
-        public float CalcularLongitud(HashSet<Zona> zonasRecorridas) {
+        
+        /**
+         * Calcula la longitud de las zonas recorridas
+         * @param zonasRecorridas Zonas recorridas
+         * @return Longitud del recorrido
+         */
+        public float calcularLongitud(HashSet<Zona> zonasRecorridas) {
             float longitud = 0;
             for (Zona e : zonasRecorridas) {
                 longitud += e.getExtension();
@@ -210,7 +227,12 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
 
             return longitud;
         }
-
+        
+        /**
+         * Calcula el maximo de visitantes de un recorrido
+         * @param zonasRecorridas Zonas recorridas
+         * @return Maximo de visitantes
+         */
         public int calcularMaxVisitantes(HashSet<Zona> zonasRecorridas) {
             float minimoVisitantes = ((Zona) zonasRecorridas.toArray()[0]).getExtension();
             for (Zona e : zonasRecorridas) {
@@ -220,7 +242,12 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
             }
             return (int) (minimoVisitantes / 50.0f);
         }
-
+        
+        /**
+         * Calcula el numero de especies del recorrido
+         * @param esp Especies a recorrer
+         * @return Numero de especies
+         */
         public int calcularNumEspecies(List<Especie> esp) {
             return esp.size();
         }
