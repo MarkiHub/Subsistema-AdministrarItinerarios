@@ -51,4 +51,12 @@ public interface IAdministrarItinerarios {
      * Inserta la infomracion requierida para el caso de uso
      */
     public void insertarDummies()throws PersistenciaException;
+    
+    /**
+     * Recupera los itinerarios que coincidan con el nombre dado
+     * @param nombre Nombre del itinerario
+     * @return Itinerario encontrado
+     * @throws PersistenciaException Si no encontro el itinerario
+     */
+    public Itinerario recuperarItinerariosPorNombre(String nombre) throws PersistenciaException;
 }

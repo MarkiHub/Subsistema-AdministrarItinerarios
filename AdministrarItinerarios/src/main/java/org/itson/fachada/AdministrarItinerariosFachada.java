@@ -83,8 +83,20 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
      * Inserta la infomracion requierida para el caso de uso
      */
     @Override
-    public void insertarDummies() throws PersistenciaException{
+    public void insertarDummies() throws PersistenciaException {
         adm.insertarDummies();
+    }
+
+    /**
+     * Recupera los itinerarios que coincidan con el nombre dado
+     *
+     * @param nombre Nombre del itinerario
+     * @return Itinerario encontrado
+     * @throws PersistenciaException Si no encontro el itinerario
+     */
+    @Override
+    public Itinerario recuperarItinerariosPorNombre(String nombre) throws PersistenciaException {
+        return adm.recuperarPorNombre(nombre);
     }
 
     /**
@@ -140,11 +152,11 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
             if (itiExiste != null) {
                 throw new PersistenciaException("Itinerario existente");
             }
-            
+
             float longitud = calcularLongitud(obtenerZonas(iti.getEspecies()));
             int maxVisitantes = calcularMaxVisitantes(obtenerZonas(iti.getEspecies()));
             int numEspecies = calcularNumEspecies(iti.getEspecies());
-            
+
             try {
                 iti.setLongitud(longitud);
                 iti.setMaxVisitantes(maxVisitantes);
@@ -196,13 +208,22 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
         public void insertarDummies() throws PersistenciaException {
             try {
                 inDum.insertarDummies();
-            }catch(DAOException e){
+            } catch (DAOException e) {
                 throw new PersistenciaException(e.getMessage());
             }
         }
-        
+
+        public Itinerario recuperarPorNombre(String nombre) throws PersistenciaException {
+            Itinerario iti = itiDao.consultarNombre(nombre);
+            if (iti == null) {
+                throw new PersistenciaException("El itinerario no existe");
+            }
+            return iti;
+        }
+
         /**
          * Obtiene las zonas recorridas en base a las especies
+         *
          * @param esp Especies recorridas
          * @return Zonas recorridas
          */
@@ -213,9 +234,10 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
             }
             return zonasRecorridas;
         }
-        
+
         /**
          * Calcula la longitud de las zonas recorridas
+         *
          * @param zonasRecorridas Zonas recorridas
          * @return Longitud del recorrido
          */
@@ -227,9 +249,10 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
 
             return longitud;
         }
-        
+
         /**
          * Calcula el maximo de visitantes de un recorrido
+         *
          * @param zonasRecorridas Zonas recorridas
          * @return Maximo de visitantes
          */
@@ -242,9 +265,10 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
             }
             return (int) (minimoVisitantes / 50.0f);
         }
-        
+
         /**
          * Calcula el numero de especies del recorrido
+         *
          * @param esp Especies a recorrer
          * @return Numero de especies
          */
