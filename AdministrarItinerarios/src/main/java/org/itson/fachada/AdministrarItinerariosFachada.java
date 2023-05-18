@@ -185,6 +185,13 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
             List<Especie> esp = new LinkedList<>();
             reducirDatos(iti.getEspecies(), esp);
             iti.setEspecies(esp);
+            if (longitud > 1500) {
+                throw new PersistenciaException("El recorrido no puede exceder de los 1500 mts");
+            }
+            if (maxVisitantes > 30) {
+                throw new PersistenciaException("El maximo de visitantes no puede exceder los 30");
+            }
+
             try {
                 iti.setLongitud(longitud);
                 iti.setMaxVisitantes(maxVisitantes);
