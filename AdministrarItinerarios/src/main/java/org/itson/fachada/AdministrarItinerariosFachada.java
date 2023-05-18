@@ -85,6 +85,7 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
 
     /**
      * Inserta la infomracion requierida para el caso de uso
+     *
      * @throws PersistenciaException Si los datos ya han sido insertados
      */
     @Override
@@ -111,6 +112,7 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
      * @throws PersistenciaException Si no existen guias almacenados en la base
      * de datos
      */
+    @Override
     public List<Guia> recuperarGuias() throws PersistenciaException {
         return adm.recuperarGuias();
     }
@@ -230,6 +232,7 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
 
         /**
          * Inserta la infomracion requierida para el caso de uso
+         *
          * @throws PersistenciaException Si los datos ya han sido insertados
          */
         public void insertarDummies() throws PersistenciaException {

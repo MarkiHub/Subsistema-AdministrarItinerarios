@@ -5,6 +5,7 @@
 package org.itson.fachada;
 
 import ObjNegocio.Especie;
+import ObjNegocio.Guia;
 import ObjNegocio.Itinerario;
 import java.util.List;
 import org.itson.fachada.excepciones.PersistenciaException;
@@ -21,12 +22,6 @@ public interface IAdministrarItinerarios {
      *
      * @param iti itinerario a registrar
      * @return Itinerario registrado
-     */
-    /**
-     * registra el itinerario dato en el parametro
-     *
-     * @param iti itinerario a registrar
-     * @return Itinerario registrado
      * @throws PersistenciaException Si existe el itinerario
      */
     public Itinerario registrarItinerario(Itinerario iti) throws PersistenciaException;
@@ -36,6 +31,7 @@ public interface IAdministrarItinerarios {
      *
      * @param identificadorId id a buscar
      * @return Lista de itinerarios del guia
+     * @throws PersistenciaException Si no existen itinerarios
      */
     public List<Itinerario> recuperarItinerarios(String identificadorId) throws PersistenciaException;
 
@@ -44,19 +40,33 @@ public interface IAdministrarItinerarios {
      * itinerarios
      *
      * @return Lista de datos (especies)
+     * @throws PersistenciaException Si no existen datos para recuperar
      */
     public List<Especie> recuperarDatosFormulario() throws PersistenciaException;
-    
+
     /**
      * Inserta la infomracion requierida para el caso de uso
+     *
+     * @throws org.itson.fachada.excepciones.PersistenciaException Si los datos
+     * ya han sido insertados
      */
-    public void insertarDummies()throws PersistenciaException;
-    
+    public void insertarDummies() throws PersistenciaException;
+
     /**
      * Recupera los itinerarios que coincidan con el nombre dado
+     *
      * @param nombre Nombre del itinerario
      * @return Itinerario encontrado
      * @throws PersistenciaException Si no encontro el itinerario
      */
     public Itinerario recuperarItinerariosPorNombre(String nombre) throws PersistenciaException;
+
+    /**
+     * Recupera todos los guias contenidos en la base de datos
+     *
+     * @return Lista de guias
+     * @throws PersistenciaException Si no existen guias almacenados en la base
+     * de datos
+     */
+    public List<Guia> recuperarGuias() throws PersistenciaException;
 }
