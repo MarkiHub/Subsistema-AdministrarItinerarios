@@ -69,4 +69,14 @@ public interface IAdministrarItinerarios {
      * de datos
      */
     public List<Guia> recuperarGuias() throws PersistenciaException;
+
+    /**
+     * Busca un itinerario que tenga un nombre similar que el que fue dado en el
+     * parametro
+     *
+     * @param nombre Nombre similar
+     * @return Lista de itinerarios
+     * @throws PersistenciaException Si no existen itinerarios con ese nombre
+     */
+    public List<Itinerario> consultarItinerariosNombreSimilar(String nombre) throws PersistenciaException;
 }

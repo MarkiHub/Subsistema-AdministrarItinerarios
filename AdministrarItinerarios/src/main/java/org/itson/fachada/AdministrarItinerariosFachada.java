@@ -118,6 +118,19 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
     }
 
     /**
+     * Busca un itinerario que tenga un nombre similar que el que fue dado en el
+     * parametro
+     *
+     * @param nombre Nombre similar
+     * @return Lista de itinerarios
+     * @throws PersistenciaException Si no existen itinerarios con ese nombre
+     */
+    @Override
+    public List<Itinerario> consultarItinerariosNombreSimilar(String nombre) throws PersistenciaException {
+        return adm.buscarItinerariosNombreSimilar(nombre);
+    }
+
+    /**
      * Clase que realiza las operaciones de administracion
      */
     protected class AdministrarItinerarios {
@@ -271,6 +284,23 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
                 throw new PersistenciaException("No existen guias registrados");
             }
             return guias;
+        }
+
+        /**
+         * Busca un itinerario que tenga un nombre similar que el que fue dado
+         * en el parametro
+         *
+         * @param nombre Nombre similar
+         * @return Lista de itinerarios
+         * @throws PersistenciaException Si no existen itinerarios con ese
+         * nombre
+         */
+        public List<Itinerario> buscarItinerariosNombreSimilar(String nombre) throws PersistenciaException {
+            List<Itinerario> itinerarios = itiDao.consultarNombreSimilar(nombre);
+            if (itinerarios == null) {
+                throw new PersistenciaException("No existen itinerarios con nombre similar");
+            }
+            return itinerarios;
         }
 
         /**
