@@ -5,6 +5,7 @@
 package org.itson.fachada;
 
 import ObjNegocio.Especie;
+import ObjNegocio.Guia;
 import ObjNegocio.Itinerario;
 import ObjNegocio.Zona;
 import java.util.HashSet;
@@ -15,9 +16,11 @@ import java.util.logging.Logger;
 import org.itson.fachada.excepciones.PersistenciaException;
 import org.itson.persistencia.excepciones.DAOException;
 import org.itson.persistencia.implementacion.EspeciesDAO;
+import org.itson.persistencia.implementacion.GuiasDAO;
 import org.itson.persistencia.implementacion.InsertarDummies;
 import org.itson.persistencia.implementacion.ItinerariosDAO;
 import org.itson.persistencia.interfaces.IEspeciesDAO;
+import org.itson.persistencia.interfaces.IGuiasDAO;
 import org.itson.persistencia.interfaces.IItinerariosDAO;
 
 /**
@@ -82,6 +85,7 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
 
     /**
      * Inserta la infomracion requierida para el caso de uso
+     * @throws PersistenciaException Si los datos ya han sido insertados
      */
     @Override
     public void insertarDummies() throws PersistenciaException {
@@ -98,6 +102,17 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
     @Override
     public Itinerario recuperarItinerariosPorNombre(String nombre) throws PersistenciaException {
         return adm.recuperarPorNombre(nombre);
+    }
+
+    /**
+     * Recupera todos los guias contenidos en la base de datos
+     *
+     * @return Lista de guias
+     * @throws PersistenciaException Si no existen guias almacenados en la base
+     * de datos
+     */
+    public List<Guia> recuperarGuias() throws PersistenciaException {
+        return adm.recuperarGuias();
     }
 
     /**
@@ -118,7 +133,14 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
          */
         private IEspeciesDAO espDao;
 
+        /**
+         * Clase de insersion de dummies
+         */
         private InsertarDummies inDum;
+        /**
+         * Acceso a datos de guias
+         */
+        private IGuiasDAO guiDao;
 
         /**
          * Constructor que inicializa el acceso a datos
@@ -134,6 +156,7 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
                 this.itiDao = new ItinerariosDAO(BASE_DATOS);
                 this.espDao = new EspeciesDAO(BASE_DATOS);
                 this.inDum = new InsertarDummies(BASE_DATOS);
+                this.guiDao = new GuiasDAO(BASE_DATOS);
 
             } catch (DAOException ex) {
                 throw new PersistenciaException("No se pudo iniciar el programa");
@@ -207,6 +230,7 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
 
         /**
          * Inserta la infomracion requierida para el caso de uso
+         * @throws PersistenciaException Si los datos ya han sido insertados
          */
         public void insertarDummies() throws PersistenciaException {
             try {
@@ -222,6 +246,21 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
                 throw new PersistenciaException("El itinerario no existe");
             }
             return iti;
+        }
+
+        /**
+         * Recupera todos los guias contenidos en la base de datos
+         *
+         * @return Lista de guias
+         * @throws PersistenciaException Si no existen guias almacenados en la
+         * base de datos
+         */
+        public List<Guia> recuperarGuias() throws PersistenciaException {
+            List<Guia> guias = guiDao.consultar();
+            if (guias.isEmpty()) {
+                throw new PersistenciaException("No existen guias registrados");
+            }
+            return guias;
         }
 
         /**
@@ -290,7 +329,7 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
             for (Especie e : esp) {
                 Especie especie = new Especie();
                 especie.setId(e.getId());
-                especie.setNomCientifico(e.getNomEspanol());
+                especie.setNomEspanol(e.getNomEspanol());
                 nueva.add(especie);
             }
         }
