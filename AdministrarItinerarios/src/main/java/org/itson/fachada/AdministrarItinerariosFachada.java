@@ -8,6 +8,7 @@ import ObjNegocio.Especie;
 import ObjNegocio.Itinerario;
 import ObjNegocio.Zona;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -156,7 +157,9 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
             float longitud = calcularLongitud(obtenerZonas(iti.getEspecies()));
             int maxVisitantes = calcularMaxVisitantes(obtenerZonas(iti.getEspecies()));
             int numEspecies = calcularNumEspecies(iti.getEspecies());
-
+            List<Especie> esp = new LinkedList<>();
+            reducirDatos(iti.getEspecies(), esp);
+            iti.setEspecies(esp);
             try {
                 iti.setLongitud(longitud);
                 iti.setMaxVisitantes(maxVisitantes);
@@ -274,6 +277,22 @@ public class AdministrarItinerariosFachada implements IAdministrarItinerarios {
          */
         public int calcularNumEspecies(List<Especie> esp) {
             return esp.size();
+        }
+
+        /**
+         * Reduce los datos de las especies, solo tomando en cuenta el id y el
+         * nombre
+         *
+         * @param esp Lista de especies
+         * @param nueva Lista nueva
+         */
+        public void reducirDatos(List<Especie> esp, List<Especie> nueva) {
+            for (Especie e : esp) {
+                Especie especie = new Especie();
+                especie.setId(e.getId());
+                especie.setNomCientifico(e.getNomEspanol());
+                nueva.add(especie);
+            }
         }
     }
 }
