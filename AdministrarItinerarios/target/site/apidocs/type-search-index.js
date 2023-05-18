@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"org.itson.fachada","l":"AdministrarItinerariosFachada.AdministrarItinerarios"},{"p":"org.itson.fachada","l":"AdministrarItinerariosFachada"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.itson.fachada","l":"IAdministrarItinerarios"},{"p":"org.itson.fachada.excepciones","l":"PersistenciaException"}];updateSearchResults();

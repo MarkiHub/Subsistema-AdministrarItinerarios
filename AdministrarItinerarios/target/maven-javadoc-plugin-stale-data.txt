@@ -1,0 +1,56 @@
+@options
+@packages
+@argfile
+-classpath
+'C:/Users/Elkur/.m2/repository/org/mongodb/mongodb-driver/3.10.2/mongodb-driver-3.10.2.jar;C:/Users/Elkur/.m2/repository/org/mongodb/bson/3.10.2/bson-3.10.2.jar;C:/Users/Elkur/.m2/repository/org/mongodb/mongodb-driver-core/3.10.2/mongodb-driver-core-3.10.2.jar;C:/Users/Elkur/.m2/repository/2/2/2/2-2.jar;C:/Users/Elkur/.m2/repository/1/negocio/1/negocio-1.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'C:/Users/Elkur/Documents/zoo_diseño-bases/IAdministrarItinerarios/Subsistema-AdministrarItinerarios/AdministrarItinerarios/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Elkur/Documents/zoo_diseño-bases/IAdministrarItinerarios/Subsistema-AdministrarItinerarios/AdministrarItinerarios/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'AdministrarItinerarios 1.0 API'
+-use
+-version
+-windowtitle
+'AdministrarItinerarios 1.0 API'
+org.itson.fachada
+org.itson.fachada.excepciones
+'C:/Users/Elkur/Documents/zoo_diseño-bases/IAdministrarItinerarios/Subsistema-AdministrarItinerarios/AdministrarItinerarios/src/main/java/org/itson/fachada/AdministrarItinerariosFachada.java'
+'C:/Users/Elkur/Documents/zoo_diseño-bases/IAdministrarItinerarios/Subsistema-AdministrarItinerarios/AdministrarItinerarios/src/main/java/org/itson/fachada/excepciones/PersistenciaException.java'
+'C:/Users/Elkur/Documents/zoo_diseño-bases/IAdministrarItinerarios/Subsistema-AdministrarItinerarios/AdministrarItinerarios/src/main/java/org/itson/fachada/IAdministrarItinerarios.java'
+C:\Users\Elkur\.m2\repository\org\mongodb\mongodb-driver\3.10.2\mongodb-driver-3.10.2.jar = 1684220010210
+C:\Users\Elkur\.m2\repository\org\mongodb\bson\3.10.2\bson-3.10.2.jar = 1683173625733
+C:\Users\Elkur\.m2\repository\org\mongodb\mongodb-driver-core\3.10.2\mongodb-driver-core-3.10.2.jar = 1683173626186
+C:\Users\Elkur\.m2\repository\2\2\2\2-2.jar = 1684390368722
+C:\Users\Elkur\.m2\repository\1\negocio\1\negocio-1.jar = 1684292970722
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\src\main\java = 1684282233619
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\allclasses-index.html = 1684401825658
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\allpackages-index.html = 1684401825663
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\element-list = 1684401825417
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\help-doc.html = 1684401825721
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\index-all.html = 1684401825708
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\index.html = 1684401825628
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\jquery-ui.overrides.css = 1684401825773
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\member-search-index.js = 1684401825675
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\module-search-index.js = 1684401825667
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\overview-summary.html = 1684401825711
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\overview-tree.html = 1684401825622
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\package-search-index.js = 1684401825670
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\script.js = 1684401825752
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\search.js = 1684401825756
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\serialized-form.html = 1684401825487
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\stylesheet.css = 1684401825740
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\tag-search-index.js = 1684401825677
+C:\Users\Elkur\Documents\zoo_diseño-bases\IAdministrarItinerarios\Subsistema-AdministrarItinerarios\AdministrarItinerarios\target\site\apidocs\type-search-index.js = 1684401825673
